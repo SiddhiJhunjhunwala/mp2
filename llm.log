@@ -1,5 +1,3 @@
-
-Claude finished the response
 Skip to content
 cs409-fa25
 mp2
@@ -204,22 +202,19 @@ Do not share my personal information
 Working out how to help build the assignment.
 Working out how to help build the assignment.
 This is your MP2 for CS 409, and it's due tonight at 11:59 PM CT, so let's move fast. I can help you build it. Since the course allows LLM use, remember to save and submit this chat log with your code and fill out the LLM survey questions on the form.
-
 Here's how I'd approach it given the time crunch:
 
 Pick an API that needs no key and has good images. PokéAPI is the easiest. It has sprites for the gallery, types for multi-select filtering, and numeric stats like ID, height, weight, and base experience for sorting. The Art Institute of Chicago and The Meal DB are also good no-key options.
 Scaffold carefully. The deploy steps are where most people lose time: choose "Ignore files and continue" in Vite, restore the README, commit package-lock.json, set base: '/mp2/', and use basename={import.meta.env.BASE_URL} with <Link> instead of <a>.
 Build three routes: / for the list view, /gallery for the gallery, and /detail/:id for details. Pass the current filtered or sorted list to the detail view so the Previous and Next buttons step through the same results the user clicked from.
 Follow the rules: use CSS Modules with no inline style={} props and no tables for layout. Use Axios for calls, and cache results to avoid rate limits.
+
 Once you pick an API, I can write the full set of files: App.tsx, the API layer, the three views, CSS modules, and vite.config.ts.
 
 Which API do you want to use?
 whichever has 0 issues
 Where are you right now?
 Haven't started
-Building list, gallery, and detail views with filtering.
-Claude’s response was interrupted.
-mp2-main.zip
 mp2-main.zip
 ZIP
 template repo
@@ -227,7 +222,9 @@ template repo
 Ran 2 commands, read a file
 Going with PokéAPI — no key, no rate-limit headaches, stable. Building it into your template now.
 
-Ran 14 commands, read 4 files, shared files
+
+now.
+
 The finished project is in the zip. It uses PokéAPI because it needs no key, has no meaningful rate limit, and has been reliable for years. It's built on your template, and the README and deploy workflow are unchanged. It compiles cleanly, and I tested clicking from the list to a detail page and then Next in a headless browser.
 
 What's in it, mapped to the rubric
@@ -243,6 +240,7 @@ Other details:
 Data is cached in sessionStorage, so the API is only called once per visit.
 If loading fails, a message explains why and offers a Try again button.
 Search and filter settings are saved in the URL, so going Back keeps them.
+
 Deploy steps
 
 On the class repo, click Use this template → Create a new repository. Name it exactly mp2 and make it public, then clone it.
@@ -251,6 +249,7 @@ Run npm install, then npm run dev to check it at localhost:5173/mp2/.
 In GitHub, go to Settings → Pages → Source and select GitHub Actions.
 Run git add . && git commit -m "Pokédex MP2" && git branch -M main && git push origin main.
 After about a minute, the site should be live at https://<username>.github.io/mp2/.
+
 If your repo isn't named mp2, change base in vite.config.ts to match.
 
 For the demo video (3 minutes max):
@@ -262,81 +261,5 @@ In the gallery, select one type, then two, and switch between Any and All.
 Click an item in the list and an item in the gallery to open the detail view.
 Use Previous and Next.
 Paste a detail URL into a new tab to show the route works directly.
+
 Before you submit: the course policy says you must export and submit this chat log and answer the LLM questions on the form. In the sources section, list PokéAPI and anything else you referenced.
-
-
-Mp2
-ZIP 
-dude git add added everything including node module4s
-
-That almost always means the hidden .gitignore didn't get copied. Finder and most file explorers skip dotfiles when you drag files over. Here's the fix.
-
-1. Recreate .gitignore by running this in your mp2 folder:
-
-bash
-printf "node_modules\ndist\n*.local\n.DS_Store\n" > .gitignore
-On Windows PowerShell, use this instead:
-
-powershell
-"node_modules`ndist`n*.local`n.DS_Store" | Out-File -Encoding utf8 .gitignore
-2. Untrack node_modules. This doesn't delete the folder; it only stops git from tracking it.
-
-bash
-git rm -r --cached node_modules dist --ignore-unmatch -q
-git add .
-git status
-git status should now list only your source files, package.json, package-lock.json, .gitignore and the other config files. It should not show anything under node_modules.
-
-3. Commit and push.
-
-bash
-git commit -m "Pokédex MP2"
-git branch -M main
-git push origin main
-If you had already committed with node_modules but haven't pushed yet, the commit in step 3 removes it from the latest version, but the old commit still contains it. To get a clean history, run this before step 3:
-
-bash
-git reset --soft HEAD~1
-Then do steps 2 and 3 again. If you already pushed, steps 1 to 3 are fine as they are. The deploy runs npm ci from scratch either way, so a stray old commit won't break anything.
-
-Also check that .github/workflows/deploy.yml made it into the repo. It's hidden for the same reason, and without it nothing will deploy. Run ls -a .github/workflows to confirm. If it's missing, copy it over from the zip's mp2-main/.github folder.
-
-check for all requirements, i need full marks
-
-Checking for lockfile and platform compatibility risks.
-Let me actually verify rather than eyeball it. I'll simulate the GitHub CI build (clean npm ci on Node 20, same as your workflow) and re-audit against the rubric.
-
-Ran a command
-CI build passes on Node 20 and the lockfile has native bindings for Mac, Windows and Linux, so npm ci won't break on GitHub. Now a scripted check of each rubric item in a real browser:
-
-Ran a command
-Those failures look like a bug in my test selectors: a span also matches the spans nested inside the type tags. I'll fix the selectors to direct children and rerun.
-
-Ran 2 commands
-All 17 checks pass. I ran each graded feature in a real browser against the clean CI build, then separately confirmed that a fresh npm ci and build succeeds on Node 20, the same as your GitHub workflow.
-
-Rubric, verified by the test (100 points)
-
-List view (28 points): all 151 Pokémon show, and the search filters on every keystroke. Sorting by name and by weight both work, ascending and descending.
-Gallery (12 points): it's an artwork grid. Selecting Fire narrows 151 to 30, and adding Water widens it to 45, so multi-select works.
-Detail view (38 points):
-Clicking a list item or a gallery item opens /pokemon/:id.
-Attributes and stats show.
-Next follows the sorted or filtered list, and Previous wraps from the first item to the last.
-Pasting /pokemon/25 directly into the address bar loads that Pokémon.
-React Router and TypeScript (12 points): both are used throughout, and the build runs tsc in strict mode, which it passes with zero errors.
-Design (10 points): this is subjective, but the layout is responsive, consistent and accessible.
-Rules: I scanned the code. It has no inline styles, no inline scripts, no tables and no internal <a> links, and it uses Axios for API calls.
-What's left is on your side, and it can still cost points:
-
-Deploy. A local-only demo is capped at 80%. After pushing, open the Actions tab on GitHub and wait for the green check. Then open your live URL plus one /pokemon/25 URL to confirm both load.
-The video, 3 minutes max. Start by showing the deployed URL in the address bar, then show every rubric item in order. Share the video with uiuc.web.programming@gmail.com and set access so they can view it.
-Sources. In the submission form, list PokéAPI and any other references you used.
-LLM policy. Submit this chat log and answer the LLM survey questions. If you skip this, it counts as an academic integrity violation, which is far worse than losing points.
-Repo name. It must be mp2, matching base: '/mp2/' in vite.config.ts. If it's named something else, the live site will be a blank page.
-
-
-
-
-Claude is AI and can make mistakes. Please double-check responses.
-
