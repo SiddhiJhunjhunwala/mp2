@@ -1,0 +1,51 @@
+:root {
+  --shell: #d4cfc8;
+  --shell-dark: #b3ada6;
+  --bezel: #5d5c6b;
+  --lcd: #9bbc0f;
+  --lcd-light: #b4d13e;
+  --lcd-mid: #8bac0f;
+  --lcd-dark: #306230;
+  --ink: #0f380f;
+  --berry: #9a1f58;
+  --berry-dark: #74143f;
+  --navy: #2a2c7a;
+  --font-pixel: 'Silkscreen', 'Courier New', monospace;
+  --font-body: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--shell);
+  color: #2b2924;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 3px solid var(--berry);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,256 @@
+.pager {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.pagerLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-self: start;
+  padding: 0.4rem 0.9rem 0.4rem 0.4rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--lcd);
+  text-decoration: none;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.pagerLink:hover {
+  background: var(--lcd-dark);
+}
+
+.pagerNext {
+  justify-self: end;
+  padding: 0.4rem 0.4rem 0.4rem 0.9rem;
+  text-align: right;
+}
+
+/* Round "A/B" style button holding the arrow */
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--berry);
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.pagerText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.pagerHint {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.pagerName {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.position {
+  font-family: var(--font-pixel);
+  font-size: 0.9rem;
+  color: var(--lcd-dark);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.figure {
+  margin: 0;
+  background: var(--lcd-light);
+  border: 3px solid var(--lcd-dark);
+  border-radius: 4px;
+}
+
+.art {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.number {
+  font-family: var(--font-pixel);
+  font-size: 1.1rem;
+  color: var(--lcd-dark);
+  margin: 0;
+}
+
+.name {
+  font-family: var(--font-pixel);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.05;
+  margin: 0.15rem 0 0.6rem;
+}
+
+.types {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1.25rem;
+  margin: 0 0 1.5rem;
+}
+
+.facts dt {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--lcd-dark);
+}
+
+.facts dd {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.subheading {
+  font-family: var(--font-pixel);
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stat {
+  display: grid;
+  grid-template-columns: 5rem 2.5rem 1fr;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.2rem 0;
+}
+
+.statName {
+  font-weight: 500;
+}
+
+.statValue {
+  font-weight: 700;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.total {
+  border-top: 2px solid var(--lcd-dark);
+  margin-top: 0.3rem;
+  padding-top: 0.4rem;
+}
+
+/* Native <progress> restyled as an LCD meter (no inline width styles needed) */
+.bar {
+  appearance: none;
+  width: 100%;
+  height: 0.75rem;
+  border: 2px solid var(--ink);
+  border-radius: 2px;
+  background: var(--lcd-light);
+  overflow: hidden;
+}
+
+.bar::-webkit-progress-bar {
+  background: var(--lcd-light);
+}
+
+.bar::-webkit-progress-value {
+  background: var(--ink);
+}
+
+.bar::-moz-progress-bar {
+  background: var(--ink);
+}
+
+.back {
+  margin: 2rem 0 0;
+}
+
+.back a {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.loading {
+  padding: 3rem 1rem;
+  text-align: center;
+  font-family: var(--font-pixel);
+}
+
+.message {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.message a {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.messageTitle {
+  font-family: var(--font-pixel);
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+}
+
+@media (max-width: 720px) {
+  .body {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .figure {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .pager {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .position {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    text-align: center;
+  }
+
+  .pagerHint {
+    display: none;
+  }
+
+  .pagerLink,
+  .pagerNext {
+    justify-self: stretch;
+    font-size: 0.9rem;
+  }
+
+  .pagerNext {
+    justify-content: flex-end;
+  }
+}

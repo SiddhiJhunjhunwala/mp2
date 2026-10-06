@@ -1,0 +1,151 @@
+.heading {
+  font-family: var(--font-pixel);
+  font-size: 1.75rem;
+  margin: 0 0 1rem;
+}
+
+.filters {
+  margin-bottom: 1.25rem;
+}
+
+.filterHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.matchToggle {
+  display: flex;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.matchButton,
+.matchActive {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border: none;
+  cursor: pointer;
+}
+
+.matchButton {
+  background: var(--lcd-light);
+  color: var(--ink);
+}
+
+.matchActive {
+  background: var(--ink);
+  color: var(--lcd);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip,
+.chipOn {
+  padding: 3px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink);
+}
+
+.chip {
+  opacity: 0.75;
+}
+
+.chip:hover {
+  opacity: 1;
+  border-color: var(--lcd-dark);
+}
+
+.chipOn {
+  border-color: var(--berry);
+  background: var(--berry);
+}
+
+.clear {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border: none;
+  background: none;
+  color: var(--berry);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.count {
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--lcd-light);
+  border: 3px solid var(--lcd-dark);
+  border-radius: 4px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.tile:hover {
+  border-color: var(--ink);
+  background: #c3dc5b;
+}
+
+.art {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  padding: 0.5rem;
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  border-top: 3px solid var(--lcd-dark);
+}
+
+.number {
+  font-family: var(--font-pixel);
+  font-size: 0.8rem;
+  color: var(--lcd-dark);
+}
+
+.name {
+  font-weight: 700;
+  text-align: right;
+}
