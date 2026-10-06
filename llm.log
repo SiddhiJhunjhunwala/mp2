@@ -1,0 +1,342 @@
+
+Claude finished the response
+Skip to content
+cs409-fa25
+mp2
+Repository navigation
+Code
+Issues
+Pull requests
+Agents
+Actions
+Projects
+Security and quality
+Insights
+mp2
+Internal template
+Go to file
+t
+T
+yuchen-orion
+yuchen-orion
+Update MP title in README
+ad90a70
+ · 
+2 weeks ago
+Name        
+.github/workflows
+port from create-react-app to vite
+2 months ago
+README.md
+Update MP title in README
+2 weeks ago
+Repository files navigation
+README
+MP 2: Front-end App
+Due: Tuesday, Oct 6, 2026, 11:59PM CT
+Table of Contents
+Assignment
+Grading Breakdown
+Tips
+Rules
+Getting Started
+Submission Details
+Assignment
+Task
+In this programming assignment, you will implement a front-end interface using React that consumes an API. Please read through the entire MP before you start.
+
+Requirements
+Create a single-page React app that lets users interact with the data from one of the following APIs.
+
+TMDB
+Pokemon
+NASA
+Marvel
+Jelly Belly Wiki
+The Meal DB
+Art Institute of Chicago
+More APIs if you want to explore here (please keep it class appropriate) 🫵🤨📸.
+Note that you may need to create an account and/or acquire an API key for some of the APIs. GitHub won’t restrict you from pushing API keys, but may send an email to say some keys are exposed. Because of this, please don't use any paid APIs.
+
+The API you are working with may become temporarily unavailable. If/when this happens, it doesn't mean you are blocked from working on the MP. You can mock the data, i.e. create a local hard coded response and use that instead of making the request.
+
+You may need to deal with APIs having rate-limiting policies. You can find ways to get around them like caching the results of large and common API calls
+
+These are also good opportunities to think about how your app should handle errors.
+
+Your app should have the following features:
+
+A list view: where users can input a query into a search bar and the app returns a list of results that match the query (i.e. searching movies or pokemon). There should also be a way to sort the search results based on different properties of the results (such as the name or rank) and of specifying an ordering (ascending and descending). Also, the search bar should filter as you type. You can sort and filter in the client side.
+A gallery view: that displays some kind of image media from the chosen API (gallery of movie posters). The gallery view should also have some kind filtering attribute where users can select one or many attributes and filter the gallery by them (i.e. genres of films or music).
+A detail view: When an item in the search view or the gallery view is clicked, the app should display the different attributes of the selected item. Also, this view should have previous and next buttons (can be implemented with arrows) that lets the user cycle through the list of objects. A detail view should have a specific route when navigated to. Basically, a user should be able to access the detail route through a specific url.
+Here's an old example that fulfills these requirements: https://www.youtube.com/watch?v=DmDZuAr7QJE
+
+You will also be required to use following tools:
+
+Use React Router for routing.
+Use Axios for API calls.
+Use TypeScript.
+Grading Breakdown
+Total Points : 100
+
+List View:
+
+Does the list view display relevant items from the chosen API ? (4 points)
+Does the search bar filter down items based on the search? (8 points)
+Can you sort by at least 2 properties? (8 points)
+Can the properties be sorted in Ascending and Descending order? (8 points)
+Gallery View:
+
+Is the gallery composed of item media? (4 points)
+Does clicking on a filter change results accordingly? (8 points)
+Details View:
+
+Does clicking on an item in List View take you to the Details View? (10 points)
+Does clicking on an item in Gallery View take you to the Details View? (10 points)
+Does the Details View contain item details? (8 points)
+Do the PREVIOUS and NEXT buttons work correctly? (10 points)
+Other:
+
+Does the implementation use React Router and TypeScript? (12 points)
+Design (10 points)
+Tips
+Start early! This is first MP that uses React so start ahead.
+Visit https://reactjs.org/docs/faq-structure.html for examples on how to structure your React files.
+You may use a React component library for this MP.
+We recommend using Normalize.css.
+We recommend using CSS Modules, which Vite supports out of the box via *.module.css.
+Rules
+This is an individual assignment. No collaboration is permitted.
+It is not permitted to copy/paste code that is not your own. You are, however, free to look at different code sources for inspiration and clarity. All sources (code as well as reading material) that you reference to complete this assignment must be declared in the submission.
+There should be no use of inline styling.
+No inline script tags should be used.
+HTML tables cannot be used for layout.
+If you think something you’re doing might not be acceptable, please ask on Piazza.
+We strongly recommend using Vite to get your MP started. If you ignore this, we will not help with any environment issues.
+Getting Started
+Use Vite (see below) to generate your MP starter code, then run npm install.
+After running npm run dev open a browser and go to http://localhost:5173/ to view your page.
+Open up src/App.tsx to start building your first component. Visit https://react.dev/learn for many official, high quality resources to help get you started.
+Vite
+Vite generates a React starter project that requires no immediate configuration, and is one of the tools React officially recommends now that Create React App is deprecated. Use the react-ts template:
+
+npm create vite@latest . -- --template react-ts
+If Vite does not install dependencies for you, run npm install afterwards. The dev server is npm run dev (not npm start), and a production build goes to dist/ (not build/).
+
+Submission Details
+Here's what you will need to submit:
+
+On the class repo, click Use this template > Create a new repository. Name it mp2 and make it public (GitHub Pages requires a public repo on a free account). Then clone it: git clone git@github.com:<your-github-username>/mp2.git
+cd mp2, then scaffold a Vite + React + TypeScript project in place:
+npm create vite@latest . -- --template react-ts
+The directory already has README.md and .github/, so Vite will ask how to proceed. Choose "Ignore files and continue". (Do NOT choose "Remove existing files" -- that deletes the deploy workflow.)
+Note: Vite's template will overwrite README.md. Please pay attention to this and use an appropriate method to restore it if needed.
+Install dependencies:
+npm install
+This also creates package-lock.json. Commit it -- the deploy workflow runs npm ci, which fails without a lockfile.
+Set base in vite.config.ts so the deployed site can find its assets:
+export default defineConfig({
+  plugins: [react()],
+  base: '/<your-github-repo-name>/',   // e.g. '/mp2/' -- must match the repo name
+})
+Getting this wrong produces a blank page with 404s on your JS/CSS, not a build error.
+In your BrowserRouter or Router component, set the basename to match:
+<BrowserRouter basename={import.meta.env.BASE_URL}>
+  ...
+</BrowserRouter>
+Note: Should use <Link/> component instead of <a> to have the same basename.
+Set GitHub Pages Deployment Source to Github Actions
+In your Github repo, go to Settings > Pages > Build and Deployment > Source > Select "GitHub Actions"
+Commit and push your local changes to this new repository.
+git add . # "." adds all changed files, can also add specific files too
+git commit -m "[my-commit-message]" # message should be clear and meaningful
+git branch -M main
+git push origin main
+.github/workflows/deploy.yml file automatically makes a GitHub CI pipeline run to deploy your code. After the pipeline finishes, your site should be live at https://<your-github-username>.github.io/mp2. It should take around 1 minute.
+Make a video (3 minutes max) demo-ing your deployed website and upload it to Google Drive. Share it with uiuc.web.programming@gmail.com and put the share link in the submission form.
+Show the url to prove you are on your deployed website. Then show all the requirement features you fulfilled in your mp.
+If you were unable to deploy your website, you can demo your mp locally for some point deduction (hard capped at 80%)
+Just make sure you do git status and git log first so we can see your last edits.
+Fill out and submit the form here.
+Large Language Model (LLM) Usage Policy
+We acknowledge the transformative potential of LLMs in generating code; however, we are still in the nascent stages of understanding how to embed LLMs in developer workflows to write code more efficiently while maintaining quality. Therefore, we will not be teaching students directly how to use LLMs to develop web applications.
+
+As part of this class, we do encourage students to experiment with LLM services such as OpenAI's ChatGPT to generate source code for MPs. If LLMs are used to generate code for an MP, students must (1) submit their chatlogs along with their source code, and (2) answer survey questions related to their experience using LLMs in the grading form. Failure to do this will be a violation of the academic integrity policy of this course.
+
+About
+No description, website, or topics provided.
+Resources
+Readme
+Activity
+Custom properties
+Stars
+0 stars
+Watchers
+0 watching
+Forks
+0 forks
+Releases
+No releases published
+Packages
+No packages published
+Contributors
+3
+ (3)
+@yuchen-orion
+yuchen-orionYuchen Wu
+@eunice-chan
+eunice-chan
+@carlguo2
+carlguo2
+Footer
+© 2026 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Community
+Docs
+Contact
+Manage cookies
+Do not share my personal information
+
+Working out how to help build the assignment.
+Working out how to help build the assignment.
+This is your MP2 for CS 409, and it's due tonight at 11:59 PM CT, so let's move fast. I can help you build it. Since the course allows LLM use, remember to save and submit this chat log with your code and fill out the LLM survey questions on the form.
+
+Here's how I'd approach it given the time crunch:
+
+Pick an API that needs no key and has good images. PokéAPI is the easiest. It has sprites for the gallery, types for multi-select filtering, and numeric stats like ID, height, weight, and base experience for sorting. The Art Institute of Chicago and The Meal DB are also good no-key options.
+Scaffold carefully. The deploy steps are where most people lose time: choose "Ignore files and continue" in Vite, restore the README, commit package-lock.json, set base: '/mp2/', and use basename={import.meta.env.BASE_URL} with <Link> instead of <a>.
+Build three routes: / for the list view, /gallery for the gallery, and /detail/:id for details. Pass the current filtered or sorted list to the detail view so the Previous and Next buttons step through the same results the user clicked from.
+Follow the rules: use CSS Modules with no inline style={} props and no tables for layout. Use Axios for calls, and cache results to avoid rate limits.
+Once you pick an API, I can write the full set of files: App.tsx, the API layer, the three views, CSS modules, and vite.config.ts.
+
+Which API do you want to use?
+whichever has 0 issues
+Where are you right now?
+Haven't started
+Building list, gallery, and detail views with filtering.
+Claude’s response was interrupted.
+mp2-main.zip
+mp2-main.zip
+ZIP
+template repo
+
+Ran 2 commands, read a file
+Going with PokéAPI — no key, no rate-limit headaches, stable. Building it into your template now.
+
+Ran 14 commands, read 4 files, shared files
+The finished project is in the zip. It uses PokéAPI because it needs no key, has no meaningful rate limit, and has been reliable for years. It's built on your template, and the README and deploy workflow are unchanged. It compiles cleanly, and I tested clicking from the list to a detail page and then Next in a headless browser.
+
+What's in it, mapped to the rubric
+
+List view (/): the search filters as you type by name or number. You can sort by number, name, height, weight or base experience, with ascending and descending buttons.
+Gallery (/gallery): a grid of official artwork with type filters. You can select several types and choose whether a Pokémon must have any or all of them.
+Detail view (/pokemon/:id): shows artwork, types, height, weight, base XP, abilities and stat bars.
+Previous and Next step through whatever list you clicked from, such as only the "char" search results or only Fire types. They wrap around at the ends, and the left and right arrow keys work too.
+Opening a URL directly falls back to stepping through all 151.
+Required tools: TypeScript, React Router, Axios and CSS Modules, with no inline styles or tables. normalize.css is included.
+Deep links: npm run build copies index.html to 404.html. Without this, opening /mp2/pokemon/25 directly on GitHub Pages would show a GitHub 404 page.
+Other details:
+Data is cached in sessionStorage, so the API is only called once per visit.
+If loading fails, a message explains why and offers a Try again button.
+Search and filter settings are saved in the URL, so going Back keeps them.
+Deploy steps
+
+On the class repo, click Use this template → Create a new repository. Name it exactly mp2 and make it public, then clone it.
+Unzip the file and copy everything inside mp2-main/ into your cloned folder, including the hidden .gitignore. Don't scaffold with Vite, because this already replaces that step.
+Run npm install, then npm run dev to check it at localhost:5173/mp2/.
+In GitHub, go to Settings → Pages → Source and select GitHub Actions.
+Run git add . && git commit -m "Pokédex MP2" && git branch -M main && git push origin main.
+After about a minute, the site should be live at https://<username>.github.io/mp2/.
+If your repo isn't named mp2, change base in vite.config.ts to match.
+
+For the demo video (3 minutes max):
+
+Show the URL in the address bar.
+Type in the search box and show the list narrowing.
+Change the sort property and switch between ascending and descending.
+In the gallery, select one type, then two, and switch between Any and All.
+Click an item in the list and an item in the gallery to open the detail view.
+Use Previous and Next.
+Paste a detail URL into a new tab to show the route works directly.
+Before you submit: the course policy says you must export and submit this chat log and answer the LLM questions on the form. In the sources section, list PokéAPI and anything else you referenced.
+
+
+Mp2
+ZIP 
+dude git add added everything including node module4s
+
+That almost always means the hidden .gitignore didn't get copied. Finder and most file explorers skip dotfiles when you drag files over. Here's the fix.
+
+1. Recreate .gitignore by running this in your mp2 folder:
+
+bash
+printf "node_modules\ndist\n*.local\n.DS_Store\n" > .gitignore
+On Windows PowerShell, use this instead:
+
+powershell
+"node_modules`ndist`n*.local`n.DS_Store" | Out-File -Encoding utf8 .gitignore
+2. Untrack node_modules. This doesn't delete the folder; it only stops git from tracking it.
+
+bash
+git rm -r --cached node_modules dist --ignore-unmatch -q
+git add .
+git status
+git status should now list only your source files, package.json, package-lock.json, .gitignore and the other config files. It should not show anything under node_modules.
+
+3. Commit and push.
+
+bash
+git commit -m "Pokédex MP2"
+git branch -M main
+git push origin main
+If you had already committed with node_modules but haven't pushed yet, the commit in step 3 removes it from the latest version, but the old commit still contains it. To get a clean history, run this before step 3:
+
+bash
+git reset --soft HEAD~1
+Then do steps 2 and 3 again. If you already pushed, steps 1 to 3 are fine as they are. The deploy runs npm ci from scratch either way, so a stray old commit won't break anything.
+
+Also check that .github/workflows/deploy.yml made it into the repo. It's hidden for the same reason, and without it nothing will deploy. Run ls -a .github/workflows to confirm. If it's missing, copy it over from the zip's mp2-main/.github folder.
+
+check for all requirements, i need full marks
+
+Checking for lockfile and platform compatibility risks.
+Let me actually verify rather than eyeball it. I'll simulate the GitHub CI build (clean npm ci on Node 20, same as your workflow) and re-audit against the rubric.
+
+Ran a command
+CI build passes on Node 20 and the lockfile has native bindings for Mac, Windows and Linux, so npm ci won't break on GitHub. Now a scripted check of each rubric item in a real browser:
+
+Ran a command
+Those failures look like a bug in my test selectors: a span also matches the spans nested inside the type tags. I'll fix the selectors to direct children and rerun.
+
+Ran 2 commands
+All 17 checks pass. I ran each graded feature in a real browser against the clean CI build, then separately confirmed that a fresh npm ci and build succeeds on Node 20, the same as your GitHub workflow.
+
+Rubric, verified by the test (100 points)
+
+List view (28 points): all 151 Pokémon show, and the search filters on every keystroke. Sorting by name and by weight both work, ascending and descending.
+Gallery (12 points): it's an artwork grid. Selecting Fire narrows 151 to 30, and adding Water widens it to 45, so multi-select works.
+Detail view (38 points):
+Clicking a list item or a gallery item opens /pokemon/:id.
+Attributes and stats show.
+Next follows the sorted or filtered list, and Previous wraps from the first item to the last.
+Pasting /pokemon/25 directly into the address bar loads that Pokémon.
+React Router and TypeScript (12 points): both are used throughout, and the build runs tsc in strict mode, which it passes with zero errors.
+Design (10 points): this is subjective, but the layout is responsive, consistent and accessible.
+Rules: I scanned the code. It has no inline styles, no inline scripts, no tables and no internal <a> links, and it uses Axios for API calls.
+What's left is on your side, and it can still cost points:
+
+Deploy. A local-only demo is capped at 80%. After pushing, open the Actions tab on GitHub and wait for the green check. Then open your live URL plus one /pokemon/25 URL to confirm both load.
+The video, 3 minutes max. Start by showing the deployed URL in the address bar, then show every rubric item in order. Share the video with uiuc.web.programming@gmail.com and set access so they can view it.
+Sources. In the submission form, list PokéAPI and any other references you used.
+LLM policy. Submit this chat log and answer the LLM survey questions. If you skip this, it counts as an academic integrity violation, which is far worse than losing points.
+Repo name. It must be mp2, matching base: '/mp2/' in vite.config.ts. If it's named something else, the live site will be a blank page.
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
